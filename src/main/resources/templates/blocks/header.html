@@ -1,0 +1,43 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div th:fragment="header">
+    <div class="bg-dark collapse" id="navbarHeader" style="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Menu</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/blog" class="text-white">Все статьи</a></li>
+
+                        <li><a href="/" class="text-white">Главная страница</a></li>
+
+                        <div th:if="${#request.isUserInRole('ADMIN')}">
+                            <li><a href="/add" class="text-white">Создать статью</a></li>
+                        </div>
+
+                        <div sec:authorize="!isAuthenticated()">
+                            <li><a href="/login" class="text-white" >Войти</a></li>
+                            <li><a href="/registration" class="text-white">Зарегистрироваться</a></li>
+                        </div>
+
+                        <div sec:authorize="isAuthenticated()">
+                            <li><a href="/logout" class="text-white">Выйти</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>Сборник фитнес статей</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+</html>
