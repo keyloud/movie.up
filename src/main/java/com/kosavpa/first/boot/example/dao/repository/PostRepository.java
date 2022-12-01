@@ -1,6 +1,6 @@
-package com.kosavpa.first.boot.example.data.repository;
+package com.kosavpa.first.boot.example.dao.repository;
 
-import com.kosavpa.first.boot.example.data.entity.post.PostEntity;
+import com.kosavpa.first.boot.example.dao.entity.post.PostEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<PostEntity, Long> {

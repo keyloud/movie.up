@@ -1,8 +1,8 @@
 package com.kosavpa.first.boot.example.controllers;
 
 
-import com.kosavpa.first.boot.example.data.entity.post.PostEntity;
-import com.kosavpa.first.boot.example.data.repository.PostRepository;
+import com.kosavpa.first.boot.example.dao.entity.post.PostEntity;
+import com.kosavpa.first.boot.example.dao.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,17 +47,17 @@ public class Second_Controller {
     public String blog(@RequestParam String title,
                        @RequestParam MultipartFile uploadFile,
                        @RequestParam String anons,
-                       @RequestParam String fullText){
-        if(!uploadFile.isEmpty()){
+                       @RequestParam String fullText,
+                       Model model){
+        if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/jpeg")){
             try {
-                byte[] uploadFileBytes = uploadFile.getBytes();
-
                 PostEntity post = new PostEntity(null, title, setDate(), anons, fullText);
                 long postId = postRepository.save(post).getId();
 
-                String filePath = "src/main/resources/static/image_anons" + title + "_" + postId + ".jpg";
-                File file = new File(filePath);
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+                byte[] uploadFileBytes = uploadFile.getBytes();
+                BufferedOutputStream bos = new BufferedOutputStream(
+                        new FileOutputStream(
+                                new File("src/main/resources/static/image_anons/" + title + "_" + postId + ".jpg")));
 
                 bos.write(uploadFileBytes);
                 bos.flush();
@@ -65,6 +65,10 @@ public class Second_Controller {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            model.addAttribute("fileError", "File maybe empty or has an extension other than jpg");
+
+            return "/add";
         }
 
         return "redirect:/blog";

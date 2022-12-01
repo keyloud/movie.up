@@ -1,6 +1,6 @@
-package com.kosavpa.first.boot.example.data.repository;
+package com.kosavpa.first.boot.example.dao.repository;
 
-import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.dao.entity.users.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {

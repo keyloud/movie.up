@@ -1,8 +1,8 @@
 package com.kosavpa.first.boot.example.controllers;
 
 
-import com.kosavpa.first.boot.example.data.entity.post.PostEntity;
-import com.kosavpa.first.boot.example.data.repository.PostRepository;
+import com.kosavpa.first.boot.example.dao.entity.post.PostEntity;
+import com.kosavpa.first.boot.example.dao.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

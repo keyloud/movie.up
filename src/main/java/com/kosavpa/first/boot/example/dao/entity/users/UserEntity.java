@@ -1,4 +1,4 @@
-package com.kosavpa.first.boot.example.data.entity.users;
+package com.kosavpa.first.boot.example.dao.entity.users;
 
 
 import lombok.Data;

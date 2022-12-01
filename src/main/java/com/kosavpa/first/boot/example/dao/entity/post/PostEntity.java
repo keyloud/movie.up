@@ -1,4 +1,4 @@
-package com.kosavpa.first.boot.example.data.entity.post;
+package com.kosavpa.first.boot.example.dao.entity.post;
 
 
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
-package com.kosavpa.first.boot.example.data.service;
+package com.kosavpa.first.boot.example.dao.service;
 
 
-import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
-import com.kosavpa.first.boot.example.data.repository.UserRepository;
+import com.kosavpa.first.boot.example.dao.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.dao.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

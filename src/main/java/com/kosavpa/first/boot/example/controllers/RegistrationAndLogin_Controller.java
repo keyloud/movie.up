@@ -1,8 +1,8 @@
 package com.kosavpa.first.boot.example.controllers;
 
 
-import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
-import com.kosavpa.first.boot.example.data.service.UserService;
+import com.kosavpa.first.boot.example.dao.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.dao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,8 +1,8 @@
 package com.kosavpa.first.boot.example.config;
 
 
-import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
-import com.kosavpa.first.boot.example.data.repository.UserRepository;
+import com.kosavpa.first.boot.example.dao.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.dao.repository.UserRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
