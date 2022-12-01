@@ -1,13 +1,15 @@
 package com.kosavpa.first.boot.example.controllers;
 
-import com.kosavpa.first.boot.example.model.entity.users.UserEntity;
-import com.kosavpa.first.boot.example.model.service.UserService;
+
+import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 @Controller
 public class RegistrationAndLogin_Controller {

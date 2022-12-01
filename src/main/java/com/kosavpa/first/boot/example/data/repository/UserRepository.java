@@ -1,6 +1,6 @@
-package com.kosavpa.first.boot.example.model.repository;
+package com.kosavpa.first.boot.example.data.repository;
 
-import com.kosavpa.first.boot.example.model.entity.users.UserEntity;
+import com.kosavpa.first.boot.example.data.entity.users.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {

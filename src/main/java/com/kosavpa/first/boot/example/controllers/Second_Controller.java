@@ -1,7 +1,8 @@
 package com.kosavpa.first.boot.example.controllers;
 
-import com.kosavpa.first.boot.example.model.entity.post.PostEntity;
-import com.kosavpa.first.boot.example.model.repository.PostRepository;
+
+import com.kosavpa.first.boot.example.data.entity.post.PostEntity;
+import com.kosavpa.first.boot.example.data.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 import java.util.Optional;
+
 
 @Controller
 public class Second_Controller {
-    private String setDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("d.MM.yyyy-k:m");
-        return sdf.format(new Date());
+    private java.sql.Date setDate() {
+        return new Date(new GregorianCalendar().getTimeInMillis());
     }
 
     @Autowired
@@ -38,9 +44,28 @@ public class Second_Controller {
     }
 
     @PostMapping("/add")
-    public String blog(@RequestParam String title, @RequestParam String anons, @RequestParam String fullText){
-        PostEntity post = new PostEntity(title, setDate(), anons, fullText);
-        postRepository.save(post);
+    public String blog(@RequestParam String title,
+                       @RequestParam("uploadFile") MultipartFile uploadFile,
+                       @RequestParam String anons,
+                       @RequestParam String fullText){
+        if(!uploadFile.isEmpty()){
+            try {
+                byte[] uploadFileBytes = uploadFile.getBytes();
+
+                PostEntity post = new PostEntity(null, title, setDate(), anons, fullText);
+                long postId = postRepository.save(post).getId();
+
+                String filePath = "src/main/resources/static/image_anons" + title + "_" + postId + ".jpg";
+                File file = new File(filePath);
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+
+                bos.write(uploadFileBytes);
+                bos.flush();
+                bos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         return "redirect:/blog";
     }
