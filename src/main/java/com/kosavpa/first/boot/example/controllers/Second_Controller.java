@@ -45,7 +45,7 @@ public class Second_Controller {
 
     @PostMapping("/add")
     public String blog(@RequestParam String title,
-                       @RequestParam("uploadFile") MultipartFile uploadFile,
+                       @RequestParam MultipartFile uploadFile,
                        @RequestParam String anons,
                        @RequestParam String fullText){
         if(!uploadFile.isEmpty()){
