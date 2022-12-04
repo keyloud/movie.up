@@ -49,7 +49,9 @@ public class Second_Controller {
                        @RequestParam String anons,
                        @RequestParam String fullText,
                        Model model){
-        if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/jpeg")){
+        if(!uploadFile.isEmpty() ||
+                uploadFile.getContentType().equals("image/jpeg") ||
+                    uploadFile.getContentType().equals("image/png")){
             try {
                 PostEntity post = new PostEntity(null, title, setDate(), anons, fullText);
                 long postId = postRepository.save(post).getId();
