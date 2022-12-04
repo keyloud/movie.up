@@ -1,11 +1,11 @@
 package com.kosavpa.first.boot.example.dao.entity.post;
 
 
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.Date;
 
 
