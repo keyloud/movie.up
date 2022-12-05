@@ -91,10 +91,6 @@ public class Second_Controller {
 
     @GetMapping("/blog/{id}/redact")
     public String redact(@PathVariable(value = "id") long id, Model model){
-        if(!postRepository.existsById(id)){
-            return "redirect:/blog/id";
-        }
-
         Optional<PostEntity> postOptional = postRepository.findById(id);
         PostEntity post = postOptional.get();
         model.addAttribute("moreAboutThePost", post);

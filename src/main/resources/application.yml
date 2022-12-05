@@ -1,13 +1,14 @@
+#server config
 server:
   port: 8081
-
+#database config
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/kinoservice
     username: root
     password: root
-
+#jpa config
   jpa:
     show-sql: true
     hibernate:
