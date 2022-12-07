@@ -47,17 +47,18 @@ public class Second_Controller {
     public String blog(@RequestParam String title,
                        @RequestParam MultipartFile uploadFile,
                        @RequestParam String anons,
+                       @RequestParam String video,
                        @RequestParam String fullText,
                        Model model){
         if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/jpeg")){
             try {
-                PostEntity post = new PostEntity(null, title, setDate(), anons, fullText);
+                PostEntity post = new PostEntity(null, title, setDate(), anons, video, fullText);
                 long postId = postRepository.save(post).getId();
 
                 byte[] uploadFileBytes = uploadFile.getBytes();
                 BufferedOutputStream bos = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File("D:/Dczrjt/JAVA/java_applications/movie_up_PGUTI/src/main/resource_image/" + title + "_" + postId + ".jpg")));
+                                new File("C:/Users/kosol/OneDrive/Рабочий стол/movie.up/src/main/resource_image/" + title + "_" + postId + ".jpg")));
 
                 bos.write(uploadFileBytes);
                 bos.flush();

@@ -25,6 +25,8 @@ public class PostEntity {
     private Date publicationDate;
     @Column(name = "anons")
     private String anons;
+    @Column (name = "video")
+    private String video;
     @Column(columnDefinition = "varchar(1000)")
     private String fullText;
 }
