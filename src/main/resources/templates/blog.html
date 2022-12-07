@@ -14,7 +14,7 @@
         <div class = "container mt-5">
             <div th:each = "el : ${posts}" class = "alert alert-info mt-2">
                 <h3 th:text = "${el.title}"/>
-                <img th:src="@{'/image_anons/' + ${el.title} + '_' + ${el.id} + '.jpg'}" width="50%" height="50%">
+                <img th:src="@{'img/' + ${el.title} + '_' + ${el.id} + '.jpg'}" width="50%" height="50%">
                 <p th:text = "${el.publicationDate}"/>
                 <a th:href = "'/blog/' + ${el.id}" class = "btn btn-warning" th:text = "#{blog.more}"></a>
             </div>
