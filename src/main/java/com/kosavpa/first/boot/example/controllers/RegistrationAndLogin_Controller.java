@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
@@ -35,10 +34,10 @@ public class RegistrationAndLogin_Controller {
     @PostMapping("/registration")
     public String addUser(@Valid UserEntity user, Errors errors, Model model) {
         if (errors.hasErrors() | userService.findByUserName(user.getUsername()) != null){
-            model.addAttribute("registrationError", "Пользователь с таким именем уже существует или введённые данные не корректны!");
 
             return "registration";
         }
+
         userService.saveUser(user);
 
         return "redirect:/";

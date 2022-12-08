@@ -68,7 +68,6 @@ public class Second_Controller {
                 e.printStackTrace();
             }
         } else {
-            model.addAttribute("fileError", "File maybe empty or has an extension other than jpg");
 
             return "/add";
         }
