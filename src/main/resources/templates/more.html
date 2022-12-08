@@ -17,11 +17,11 @@
                 <p th:text = "*{publicationDate}"/>
                 <p th:utext = "*{fullText}"/>
                 <form th:action = "'/blog/' + *{id} + '/redact/'" method="get">
-                    <button class = "btn btn-warning" type = "submit" th:text = "#{more.redactButton}"></button>
+                    <button class = "btn btn-warning" type = "submit" th:text = "'Редактировать'"></button>
                 </form>
                 </br>
                 <form th:action = "'/blog/' + *{id} + '/delete'" method="post">
-                    <button class = "btn btn-warning" type = "submit" th:text = "#{more.deleteButton}"></button>
+                    <button class = "btn btn-warning" type = "submit" th:text = "'Удалить'"></button>
                 </form>
             </div>
         </div>

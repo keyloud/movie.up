@@ -6,15 +6,24 @@ import com.kosavpa.first.boot.example.dao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
 public class RegistrationAndLogin_Controller {
     @Autowired
     private UserService userService;
+
+    @ModelAttribute(name = "userEntity")
+    public UserEntity addUserEntity(){
+        return new UserEntity();
+    }
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -24,18 +33,19 @@ public class RegistrationAndLogin_Controller {
     }
 
     @PostMapping("/registration")
-    public String addUser(@ModelAttribute("UserEntity") UserEntity userForm,  Model model) {
+    public String addUser(@Valid UserEntity user, Errors errors, Model model) {
+        if (errors.hasErrors() | userService.findByUserName(user.getUsername()) != null){
+            model.addAttribute("registrationError", "Пользователь с таким именем уже существует или введённые данные не корректны!");
 
-        if (!userService.saveUser(userForm)){
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "registration";
         }
+        userService.saveUser(user);
 
         return "redirect:/";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login() {
 
         return "login";
     }

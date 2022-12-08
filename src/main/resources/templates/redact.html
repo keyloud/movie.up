@@ -11,13 +11,13 @@
     <body>
         <header th:insert="blocks/header :: header"></header>
         <div class = "container mt-5 mb-5">
-              <h1 th:text = "#{redact.title}"></h1>
+              <h1 th:text = "'Редактирование статьи'"></h1>
               <form method="post">
                   <div th:object = "${moreAboutThePost}">
                       <input type = "text" th:value = "*{title}" name = "title" class = "form-control"><br>
                       <input type = "text" th:value = "*{anons}" name = "anons" class = "form-control"><br>
                       <textarea name = "fullText"  class = "form-control" th:text = "*{fullText}"/><br>
-                      <button type="submit" class = "btn btn-success" th:text = "#{redact.buttonRedact}"></button>
+                      <button type="submit" class = "btn btn-success" th:text = "'Редактировать'"></button>
                   </div>
               </form>
         </div>

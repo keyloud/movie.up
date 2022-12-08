@@ -11,26 +11,24 @@
 
     <body>
         <header th:insert="blocks/header :: header"></header>
-        <div th:if="${param.error}"></div>
-        <div th:if="${param.logout}"></div>
         <center>
             <div class="container mt-5 mb-5">
-                <div class="container mb-2"><h5 th:text = "#{login.loginTitle}"></h5></div>
+                <div class="container mb-2"><h5 th:text = "'Вход в учетную запись'"></h5></div>
                 <form th:action="@{/login}" method="post">
                     <div class="container mb-2">
                         <label>
-                            <div class="container mb-1" align="left" th:text = "#{login.usernameLabel}"></div>
-                            <input type="text" name="username" th:placeholder="#{login.usernamePlaceholder}" class="form-control"/>
+                            <div class="container mb-1" align="left" th:text = "'Имя пользователя'"></div>
+                            <input type="text" name="username" th:placeholder="'Введите имя пользователя'" class="form-control"/>
                         </label>
                     </div>
                     <div class="container mb-2">
                         <label>
-                            <div class="container mb-1" align="left" th:text = "#{login.passwordLabel}"></div>
-                            <input type="password" name="password" th:placeholder="#{login.passwordPlaceholder}" class="form-control"/>
+                            <div class="container mb-1" align="left" th:text = "'Пароль'"></div>
+                            <input type="password" name="password" th:placeholder="'Введите пароль'" class="form-control"/>
                         </label>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-success" th:text = "#{login.buttonLogin}"></button>
+                        <button type="submit" class="btn btn-success" th:text = "'Войти'"></button>
                     </div>
                 </form>
             </div>

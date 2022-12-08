@@ -13,22 +13,24 @@
         <header th:insert="blocks/header :: header"></header>
         <center>
             <div class="container mt-5 mb-5">
-                <h5 th:text = "#{registration.registrationTitle}"></h5>
-                <form th:action="@{/registration}" th:object="${UserEntity}" method="post">
+                <h5 th:text = "Регистрация"></h5>
+                <form th:action="@{/registration}" th:object="${userEntity}" method="post">
+                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                     <div class="container mb-2">
                         <label>
-                            <div class="container mb-1" align="left" th:text = "#{registration.usernameLabel}"></div>
-                            <input type="text" th:field="*{username}" name="username" th:placeholder="#{registration.usernamePlaceholder}" class="form-control"/>
+                            <div class="container mb-1" align="left" th:text = "'Имя пользователя:'"></div>
+                            <input type="text" th:field="*{username}" name="username" th:placeholder="'Введите имя пользователя'" class="form-control"/>
                         </label>
                     </div>
                     <div class="container mb-2">
                         <label>
-                            <div class="container mb-1" align="left" th:text = "#{registration.passwordLabel}"></div>
-                            <input type="password" th:field="*{password}" name="password" th:placeholder="#{registration.passwordPlaceholder}" class="form-control"/>
+                            <div class="container mb-1" align="left" th:text = "'Пароль:'"></div>
+                            <input type="password" th:field="*{password}" name="password" th:placeholder="'Введите пароль'" class="form-control"/>
                         </label>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-success" th:text = "#{registration.buttonRegistration}"></button>
+                        <button type="submit" class="btn btn-success" th:text = "Регистрация"></button>
                     </div>
                 </form>
             </div>

@@ -8,6 +8,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -21,8 +23,12 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "username")
+    @NotNull(message = "Имя пользователя не может быть пустым!")
+    @Size(min = 3, max = 10, message = "Имя пользователя должно содержать от 3 до 10 знаков включительно!")
     private String username;
     @Column(name = "password")
+    @NotNull(message = "Пароль не должен быть пустым!")
+    @Size(min = 3, max = 24, message = "Пароль должен содержать от 3 до 24 знаков включительно!")
     private String password;
     @Column(name = "role")
     private String role;

@@ -18,14 +18,20 @@ import java.util.*;
 @Transactional
 public class UserService implements UserDetailsService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return Optional.of(userRepository.findByUsername(username)).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    @Transactional(readOnly = true)
+    public UserEntity findByUserName(String username){
+
+        return userRepository.findByUsername(username);
     }
 
     @Transactional(readOnly = true)
@@ -39,15 +45,10 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public boolean saveUser(UserEntity user) {
-        if (userRepository.findByUsername(user.getUsername()) != null)
-            return false;
-
+    public UserEntity saveUser(UserEntity user) {
         user.setRole("ROLE_USER");
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-
-        return true;
+        return userRepository.save(user);
     }
 
     @Transactional

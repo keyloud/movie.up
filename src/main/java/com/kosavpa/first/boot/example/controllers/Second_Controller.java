@@ -49,15 +49,17 @@ public class Second_Controller {
                        @RequestParam String anons,
                        @RequestParam String fullText,
                        Model model){
-        if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/jpeg")){
+        if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/png") || uploadFile.getContentType().equals("image/jpg")){
             try {
-                PostEntity post = new PostEntity(null, title, setDate(), anons, fullText);
-                long postId = postRepository.save(post).getId();
+                String imgFormat = "." + uploadFile.getOriginalFilename().split("\\.")[1];
+                PostEntity post = new PostEntity(null, title, setDate(), anons, imgFormat, fullText);
 
+                long postId = postRepository.save(post).getId();
                 byte[] uploadFileBytes = uploadFile.getBytes();
+
                 BufferedOutputStream bos = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File("D:/Dczrjt/JAVA/java_applications/movie_up_PGUTI/src/main/resource_image/" + title + "_" + postId + ".jpg")));
+                                new File("D:/Dczrjt/JAVA/java_applications/movie_up_PGUTI/src/main/resource_image/" + title + "_" + postId + imgFormat)));
 
                 bos.write(uploadFileBytes);
                 bos.flush();

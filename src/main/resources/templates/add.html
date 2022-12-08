@@ -13,14 +13,14 @@
         <header th:insert="blocks/header :: header"></header>
 
         <div class = "container mt-5 mb-5">
-            <h1 th:text = "#{addArticle.header}"></h1>
+            <h1 th:text = "'Создание новой статьи'"></h1>
             <form action = "/add" enctype= "multipart/form-data" method="post">
-                <input type = "text" name = "title" th:placeholder = "#{addArticle.title}" class = "form-control"><br>
-                <h4 th:text = "#{addArticle.image}"></h4>
+                <input type = "text" name = "title" th:placeholder = "'Заголовок статьи'" class = "form-control"><br>
+                <h4 th:text = "'Добавить картинку'"></h4>
                 <input type = "file" name = "uploadFile" class = "form-control"><br>
-                <input type = "text" name = "anons" th:placeholder = "#{addArticle.anons}" class = "form-control"><br>
-                <textarea name = "fullText" th:placeholder = "#{addArticle.fullText}" class = "form-control"></textarea><br>
-                <button type="submit" class = "btn btn-success" th:text = "#{addArticle.addButton}"></button>
+                <input type = "text" name = "anons" th:placeholder = "'Анонс статьи'" class = "form-control"><br>
+                <textarea name = "fullText" th:placeholder = "'Текст статьи'" class = "form-control"></textarea><br>
+                <button type="submit" class = "btn btn-success" th:text = "'Создать'"></button>
             </form>
         </div>
     </body>
