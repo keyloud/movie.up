@@ -1,9 +1,0 @@
-.container{
-    display: flex;
-    justify-content: space-around;
-}
-
-iframe{
-    margin-top: 5%;
-    border-radius: 10%;
-}

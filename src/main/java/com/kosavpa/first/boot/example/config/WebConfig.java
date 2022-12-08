@@ -30,6 +30,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("img/**").addResourceLocations("file:///D:/Dczrjt/JAVA/java_applications/movie_up_PGUTI/src/main/resource_image/");
+        registry.addResourceHandler("img/**").addResourceLocations("file:///C:/Users/kosol/OneDrive/Рабочий стол/movie.up/src/main/resource_image/");
     }
 }
