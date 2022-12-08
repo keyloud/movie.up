@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/test
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/movieup
     username: root
-    password: root
+    password: admin
 #jpa config
   jpa:
     show-sql: true

@@ -52,7 +52,7 @@
             </div>
             <div class="col">
                 <div class="card shadow-sm">
-                    <img th:src="@{'/image_anons/' + ${el.title} + '_' + ${el.id} + '.jpg'}" height="80%">
+                    <img th:src="@{'img/' + ${el.title} + '_' + ${el.id} + ${el.imgFormat}}" width="50%" height="50%">
                 </div>
             </div>
         </div>

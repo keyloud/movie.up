@@ -59,7 +59,7 @@ public class Second_Controller {
 
                 BufferedOutputStream bos = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File("D:/Dczrjt/JAVA/java_applications/movie_up_PGUTI/src/main/resource_image/" + title + "_" + postId + imgFormat)));
+                                new File("C:/Users/kosol/OneDrive/Рабочий стол/movie.up/src/main/resource_image/" + title + "_" + postId + imgFormat)));
 
                 bos.write(uploadFileBytes);
                 bos.flush();
