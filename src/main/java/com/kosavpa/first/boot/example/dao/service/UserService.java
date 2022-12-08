@@ -44,7 +44,7 @@ public class UserService implements UserDetailsService {
         return (List<UserEntity>) userRepository.findAll();
     }
 
-    @Transactional
+//    @Transactional
     public UserEntity saveUser(UserEntity user) {
         user.setRole("ROLE_USER");
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
