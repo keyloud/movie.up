@@ -7,6 +7,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
                 integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
                 crossorigin="anonymous"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+        <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key={API KEY}"></script>
+
     </head>
 
     <body>
@@ -18,8 +21,21 @@
                 <input type = "text" name = "title" th:placeholder = "'Заголовок статьи'" class = "form-control"><br>
                 <h4 th:text = "'Добавить картинку'"></h4>
                 <input type = "file" name = "uploadFile" class = "form-control"><br>
-                <input type = "text" name = "anons" th:placeholder = "'Анонс статьи'" class = "form-control"><br>
-                <textarea name = "fullText" th:placeholder = "'Текст статьи'" class = "form-control"></textarea><br>
+                <input type = "text" name = "anons" th:placeholder = "'Укажите автора'" class = "form-control"><br>
+                <input type = "text" name = "anons" th:placeholder = "'Введите ссылку с youtube'" class = "form-control"><br>
+                <textarea id= "editor" name = "fullText" th:placeholder = "'Текст статьи'" class = "form-control"></textarea><br>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#editor' ), {
+                            toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList','mediaEmbed' ]
+                        })
+                        .then( editor => {
+                            console.log('Editor was initialized',editor);
+                        })
+                        .catch( error => {
+                            console.error( error.stack );
+                        } );
+                </script>
                 <button type="submit" class = "btn btn-success" th:text = "'Создать'"></button>
             </form>
         </div>

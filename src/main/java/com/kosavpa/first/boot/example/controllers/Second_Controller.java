@@ -45,6 +45,7 @@ public class Second_Controller {
 
     @PostMapping("/add")
     public String blog(@RequestParam String title,
+                       @RequestParam String videoId,
                        @RequestParam MultipartFile uploadFile,
                        @RequestParam String anons,
                        @RequestParam String fullText,
@@ -52,7 +53,7 @@ public class Second_Controller {
         if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/png") || uploadFile.getContentType().equals("image/jpg")){
             try {
                 String imgFormat = "." + uploadFile.getOriginalFilename().split("\\.")[1];
-                PostEntity post = new PostEntity(null, title, setDate(), anons, imgFormat, fullText);
+                PostEntity post = new PostEntity(null, title,videoId, setDate(), anons, imgFormat, fullText);
 
                 long postId = postRepository.save(post).getId();
                 byte[] uploadFileBytes = uploadFile.getBytes();
