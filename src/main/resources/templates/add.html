@@ -22,12 +22,12 @@
                 <h4 th:text = "'Добавить картинку'"></h4>
                 <input type = "file" name = "uploadFile" class = "form-control"><br>
                 <input type = "text" name = "anons" th:placeholder = "'Укажите автора'" class = "form-control"><br>
-                <input type = "text" name = "anons" th:placeholder = "'Введите ссылку с youtube'" class = "form-control"><br>
+                <input type = "text" name = "videoId" th:placeholder = "'Введите ссылку с youtube'" class = "form-control"><br>
                 <textarea id= "editor" name = "fullText" th:placeholder = "'Текст статьи'" class = "form-control"></textarea><br>
                 <script>
                     ClassicEditor
                         .create( document.querySelector( '#editor' ), {
-                            toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList','mediaEmbed' ]
+                            toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList']
                         })
                         .then( editor => {
                             console.log('Editor was initialized',editor);
