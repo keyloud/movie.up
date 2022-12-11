@@ -16,7 +16,7 @@
         <div class = "container mt-5">
             <div th:object = "${moreAboutThePost}" class = "alert alert-info mt-2">
                 <h1 th:text = "*{title}"/>
-                <iframe width="700" height="400" th:src="*{videoId}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="700" height="400" th:src="'https://www.youtube.com/embed/' + *{videoId}" frameborder="0" allowfullscreen></iframe>
                 <p th:text = "*{publicationDate}"/>
                 <p th:utext = "*{fullText}"/>
                 <form th:action = "'/blog/' + *{id} + '/redact/'" method="get">

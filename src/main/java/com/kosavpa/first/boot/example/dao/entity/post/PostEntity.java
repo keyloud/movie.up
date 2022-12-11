@@ -20,7 +20,7 @@ public class PostEntity {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name ="videoId")
+    @Column(name ="video_id")
     private String videoId;
     @Column(name = "publication")
     @Temporal(TemporalType.DATE)

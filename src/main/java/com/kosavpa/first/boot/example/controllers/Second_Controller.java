@@ -52,15 +52,16 @@ public class Second_Controller {
                        Model model){
         if(!uploadFile.isEmpty() || uploadFile.getContentType().equals("image/png") || uploadFile.getContentType().equals("image/jpg")){
             try {
+                String shortVideoId = videoId.split("=")[1];
                 String imgFormat = "." + uploadFile.getOriginalFilename().split("\\.")[1];
-                PostEntity post = new PostEntity(null, title,videoId, setDate(), anons, imgFormat, fullText);
+                PostEntity post = new PostEntity(null, title, shortVideoId, setDate(), anons, imgFormat, fullText);
 
                 long postId = postRepository.save(post).getId();
                 byte[] uploadFileBytes = uploadFile.getBytes();
 
                 BufferedOutputStream bos = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File("C:/Users/kosol/OneDrive/Рабочий стол/movie.up/src/main/resource_image/" + title + "_" + postId + imgFormat)));
+                                new File("./src/main/resource_image/" + title + "_" + postId + imgFormat)));
 
                 bos.write(uploadFileBytes);
                 bos.flush();
